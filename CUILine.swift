@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class CUILine: UIView {
     // line
     @IBInspectable var lineWidth: CGFloat = 1
