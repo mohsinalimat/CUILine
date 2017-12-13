@@ -60,5 +60,15 @@ class CUILine: UIView {
         // 4、 绘制图像到指定图形上下文
         context!.drawPath(using: .fillStroke)
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        backgroundColor = .clear
+    }
 
 }
