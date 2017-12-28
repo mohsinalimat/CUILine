@@ -2,17 +2,19 @@
 //  CUILine.swift
 //  JYHealth
 //
-//  Created by luoyang on 2017/11/30.
-//  Copyright © 2017年 JY. All rights reserved.
+//  Created by 骆扬 on 2017/11/30.
+//  Copyright © 2017年 LY. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable
-class CUILine: UIView {
+class UILine: UIView {
     // line
-    @IBInspectable var lineWidth: CGFloat = 1
-    @IBInspectable var lineColor: UIColor = UIColor.black
+    
+    @IBInspectable var isLineWidthUnitUsePx: Bool = true
+    @IBInspectable var lineWidth: CGFloat = 1 // 单位：point
+    @IBInspectable var lineColor: UIColor = UIColor.init(red: 189/255.0, green: 189/255.0, blue: 189/255.0, alpha: 1)
     // padding
     @IBInspectable var paddingLeft: CGFloat = 0
     @IBInspectable var paddingRight: CGFloat = 0
@@ -52,7 +54,8 @@ class CUILine: UIView {
         // 2、 添加路径到图形上下文
         context!.addPath(path)
         // 3、 设置状态
-        context!.setLineWidth(lineWidth / UIScreen.main.scale)
+        
+        context!.setLineWidth(isLineWidthUnitUsePx ? lineWidth/UIScreen.main.scale : lineWidth)
         context!.setStrokeColor(lineColor.cgColor)
         if isDash {
             context!.setLineDash(phase: 0, lengths: [dashPointWidth, dashSpace])
@@ -70,5 +73,5 @@ class CUILine: UIView {
         super.init(coder: aDecoder)
         backgroundColor = .clear
     }
-
+    
 }
